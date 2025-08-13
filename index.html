@@ -4,14 +4,231 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Event Bamenda</title>
-        <link rel="stylesheet" href="/styles/global.css">
-        <link rel="stylesheet" href="/styles/main.css">
+        <link rel="stylesheet" href="./styles/global.css">
+        <link rel="stylesheet" href="./styles/main.css">
     </head>
     <body>
         <!--hero section-->
-        <section class="hero">
-            <h1>Welcome to Event Bamenda</h1>
-            <p>Your go-to platform for events in Bamenda.</p>
+        <section class="hero-section">
+            <div class="hero-overlay">
+                <h1>Don’t miss out!</h1>
+                <h2>
+                    Explore the <span class="highlight">vibrant events</span>
+                    happening here in Bamenda.
+                </h2>
+                <div class="search-bar">
+                    <input type="text"
+                        placeholder="Search Events, Categories, Location..." />
+                    <button>Search</button>
+                    <select>
+                        <option>Categories</option>
+                        <option value="Music">Music</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Arts">Arts</option>
+                        <option value="Food">Food</option>
+                        <option value="Education">Education</option>
+                        <option value="Community">Community</option>
+                        <option value="Health">Health</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Business">Business</option>
+                    </select>
+                    <select>
+                        <option>location</option>
+                        <option value="Bamenda I">Bamenda I</option>
+                        <option value="Bamenda II">Bamenda II</option>
+                        <option value="Bamenda III">Bamenda III</option>
+                    </select>
+                    <input type="text" placeholder="Date range" />
+                </div>
+            </div>
         </section>
+        <!--Events Section-->
+
+        <section class="events-section">
+            <h2>Events</h2>
+            <div class="events-grid">
+                <!-- Event Card 1 -->
+                <div class="event-card">
+                    <img src="./images/clean.jpeg" alt="Cleaning at mulang"
+                        class="event-img">
+                    <span class="event-category Community">Travel &
+                        Adventure</span>
+                    <button class="event-fav">&#9734;</button>
+                    <div class="event-info">
+                        <div class="event-date">
+                            <span class="event-month">NOV</span>
+                            <span class="event-day">25-26</span>
+                        </div>
+                        <div>
+                            <h3>Community Clean-up</h3>
+                            <p class="event-host">Bamenda II</p>
+                            <p class="event-time">8:30 AM - 2:30 PM</p>
+                            <p class="event-price">FREE</p> <span
+                                class="event-interested">&#9733;14
+                                interested</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Event Card 2 -->
+            <div class="event-card">
+                <img src="./images/christmas.jpg" alt="Christmas 2023"
+                    class="event-img">
+                <span class="event-category arts">Community</span>
+                <button class="event-fav">&#9734;</button>
+                <div class="event-info">
+                    <div class="event-date">
+                        <span class="event-month">DEC</span>
+                        <span class="event-day">02</span>
+                    </div>
+                    <div>
+                        <h3>Sound Of Christmas 2023</h3>
+                        <p class="event-host">Bamenda III</p>
+                        <p class="event-time">6:30 PM - 9:30 PM</p>
+                        <p class="event-price">FREE</p> <span
+                            class="event-interested">&#9733; 16
+                            interested</span></p>
+                </div>
+            </div>
+        </div>
+        <!-- Event Card 3 -->
+        <div class="event-card">
+            <img src="./images/tech.jpeg"
+                alt="dev-fest"
+                class="event-img">
+            <span class="event-category tech">Tech</span>
+            <button class="event-fav">&#9734;</button>
+            <div class="event-info">
+                <div class="event-date">
+                    <span class="event-month">DEC</span>
+                    <span class="event-day">02</span>
+                </div>
+                <div>
+                    <h3>Google Dev-Fest at bambili</h3>
+                    <p class="event-host">Bambili Mile 7</p>
+                    <p class="event-time">10 AM - 5 PM</p>
+                    <p class="event-price">FREE</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <h2>Upcoming Events</h2>
+    <div class="events-container">
+        <div class="event-card">
+            <img src="./images/dance.jpg" alt="Event 1" />
+            <h3>Music Festival</h3>
+            <p>Date: 25th Dec 2023</p>
+            <p>Location: Bamenda I</p>
+            <button>View Details</button>
+        </div>
+        <div class="event-card">
+            <img src="./images/arts.jpeg" alt="Event 2" />
+            <h3>Art Exhibition</h3>
+            <p>Date: 30th Dec 2023</p>
+            <p>Location: Bamenda II</p>
+            <button>View Details</button>
+        </div>
+        <div class="event-card">
+            <img src="./images/clean.jpeg" alt="Event 3" />
+            <h3>Community Clean-up</h3>
+            <p>Date: 5th Jan 2024</p>
+            <p>Location: Bamenda III</p>
+            <button>View Details</button>
+        </div>
+        <div class="event-card">
+            <img src="./images/tech.jpeg" alt="Event 4" />
+            <h3>Tech Conference</h3>
+            <p>Date: 10th Jan 2024</p>
+            <p>Location: Bamenda I</p>
+            <button>View Details</button>
+        </div>
+    </div>
+</section>
+<form class="event-form">
+    <h2>Event Details</h2>
+    <label for="event-title">Event Title<span
+            class="required">*</span></label>
+    <input type="text" id="event-title"
+        placeholder="Enter the name of your event" required>
+
+    <label for="event-category">Event Category<span
+            class="required">*</span></label>
+    <select id="event-category" required>
+        <option value>Please select one</option>
+        <option value="Music">Music</option>
+        <option value="Sports">Sports</option>
+        <option value="Arts">Arts</option>
+        <option value="Food">Food</option>
+        <option value="Education">Education</option>
+        <option value="Community">Community</option>
+        <option value="Health">Health</option>
+        <option value="Technology">Technology</option>
+        <option value="Business">Business</option>
+    </select>
+
+    <h2>Date & Time</h2>
+    <div class="datetime-row">
+        <div>
+            <label for="event-session">Session(s)<span
+                    class="required">*</span></label>
+            <select id="event-session" required>
+                <option value>Please select one</option>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+            </div>
+            <div>
+                <label for="start-date">Start Date<span
+                        class="required">*</span></label>
+                <input type="text" id="start-date" placeholder="DD/MM/YY"
+                    required>
+            </div>
+            <div>
+                <label for="start-time">Start Time<span
+                        class="required">*</span></label>
+                <input type="text" id="start-time" placeholder="12:00 AM"
+                    required>
+            </div>
+            <div>
+                <label for="end-time">End Time</label>
+                <input type="text" id="end-time" placeholder="12:00 AM">
+            </div>
+        </div>
+
+        <h2>Location</h2>
+        <label for="event-location">Where will your event take place?<span
+                class="required">*</span></label>
+        <select id="event-location" required>
+            <option value>Please select one</option>
+            <option value="Bamenda I">Bamenda I</option>
+            <option value="Bamenda II">Bamenda II</option>
+            <option value="Bamenda III">Bamenda III</option>
+        </select>
+
+        <h2>Additional Information</h2>
+        <label for="event-description">Event Description<span
+                class="required">*</span></label>
+        <textarea id="event-description" rows="4"
+            placeholder="Describe what's special about your event & other important details."
+            required></textarea>
+
+        <h2>Upload Image</h2>
+        <input type="file" id="event-image" accept=".jpg,.jpeg,.png,.gif">
+        <small>
+            Feature image must be at least 1170 pixels wide by 504 pixels
+            high.<br>
+            Valid file formats: JPG, GIF, PNG.
+        </small>
+        <button type="submit" class="save-btn">Save & Continue</button>
+    </form>
+    <!--create event CTA-->
+    <section class="create-event-section">
+        <h2>Create Your Event</h2>
+        <p>Share your event with the community and let everyone know what's
+            happening!</p>
+        <button id="create-event-btn">Create Event</button>
+        <script src="./script/slider.js">
+        </script>
     </body>
 </html>
