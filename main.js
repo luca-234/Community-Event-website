@@ -9,42 +9,47 @@ let date = new Date;
 weather to render filtered list or Events list*/
 let isQueried = false
 //gets the form wich will act ass event 
-let formSubmit = document.querySelector('form')
+let formSubmit = document.querySelector('.save-btn')
 
+formSubmit.addEventListener('click', ()=>{
+    getData()
+})
 
 function getData(){
     
-    form.addEventListener('submit', (e)=>{
-        e.preventDefault()
-        let eventTitle = document.getElementById('event-title')
-        let categories = document.getElementById('event-category')
-        let session = document.getElementById('event-session')
-        let startDate = document.getElementById('start-date')
-        let startTime = document.getElementById('start-time')
-        let stopTime = document.getElementById('end-time')
-        let location = document.getElementById('event-location')
-        let description = document.getElementById('event-description')
-        let image = document.getElementById('event-image')
-        
+    let eventTitle = document.getElementById('event-title').value
+    let categories = document.getElementById('event-category').value
+    let session = document.getElementById('event-session').value
+    let startDate = document.getElementById('start-date').value
+    let startTime = document.getElementById('start-time').value
+    let stopTime = document.getElementById('end-time').value
+    let location = document.getElementById('event-location').value
+    let description = document.getElementById('event-description').value
+    let image = document.getElementById('event-image').value
+    
 
-        item = {
-            eventTitle,
-            startDate,
-            startTime,
-            stopTime,
-            description,
-            location,
-            categories,
-            keyword,
-            image,
-            session,
-            attendance,
-            price,
-            status: 'upcomming',
-            id : eventTitle + date
-        }
-        addToEvents(item)
-    })
+    item = {
+        eventTitle,
+        startDate,
+        startTime,
+        stopTime,
+        description,
+        location,
+        categories,
+        keyword: 'hi',
+        image,
+        session,
+        attendance: 0,
+        price: 0,
+        status: 'upcomming',
+        id : eventTitle + date
+    }
+
+    console.log(item)
+    // addToEvents(item)
+    // form.addEventListener('submit', (e)=>{
+    //     e.preventDefault()
+    // })
 }
 
 /*discardable function used for adding random items for testing remember to remove object structure before discarding */
@@ -128,7 +133,6 @@ function filtering(category = '', location = '', search =''){
         else return false
     })
     filtered = (keyWord.concat(findLocation)).concat(categories)
-    console.log(filtered)
 }
 filtering()
 
@@ -167,7 +171,7 @@ function renderEvents(){
         html += itemHtml
     })
 
-    document.querySelector('.events-container').innerHTML = `<h1>events</h1> `
+    document.querySelector('.events-grid').innerHTML = html
 }
 
 renderEvents()
@@ -200,7 +204,7 @@ function renderTodays(){
         `
         html += itemHtml
     })
-    document.querySelector('.todays-container').innerHTML = `<h1>todays Events</h1> ${html}`
+    document.querySelector('.todays').innerHTML = html
     
 }
 
