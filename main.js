@@ -3,16 +3,23 @@ let Events = JSON.parse(localStorage.getItem('events')) || []
 let sorted = []
 let filtered = []
 let item
+//gets date of today
+let date = new Date;
+/* variable to decide weather there is a query for a filter or not then determine
+weather to render filtered list or Events list*/
+let isQueried = false
+
+
 /*discardable function used for adding random items for testing remember to remove object structure before discarding */
 function testingEvents(){
+    Events = []
     item = undefined;
     ['wedding', 'orientation', 'talk', 'empowerment'].forEach((element)=>{
         let name = 'name'
-        let date = 'today'
         let start= '2:00'
         let Stop= '6:00'
         let description= "long string for description"
-        let location= 'bamenda 1'
+        let location= 'bamenda 2'
         let categories= [element, 'consert', 'music']
         let keyword= ['sing', 'dance','entertainment']
         let image= './sample.jpg'
@@ -22,7 +29,7 @@ function testingEvents(){
     
         item = {
             name,
-            date ,
+            date,
             start,
             Stop,
             description,
@@ -42,6 +49,7 @@ function testingEvents(){
 let addToEvents = (item)=> {
     if(item){
         Events.push(item)
+        //remember to remove events = []
         localStorage.setItem('events', JSON.stringify(Events))
     }
 }
@@ -83,18 +91,80 @@ function filtering(category = '', location = '', search =''){
         else return false
     })
     filtered = (keyWord.concat(findLocation)).concat(categories)
-    console.log(filtered)
 }
 filtering('empowerment', 'education')
 
 /* function that desides wich list gets redered */
 
-let renderList = ()=>{
-
+function List(){
+    return isQueried ? filtered : sorted
 }
 
+/*function that renders events in the event section */
+function renderEvents(){
+    let html = ''
+    List().forEach(item=>{
+        let itemHtml = 
+        `
+             <div class="event-card">
+                      <img src=${item.image} width = '5%'
+                       alt="dev-fest"
+                       class="event-img">
+                   <span class="event-category tech">Tech</span>
+                   <button class="event-fav">&#9734;</button>
+                   <div class="event-info">
+                       <div class="event-date">
+                           <span class="event-month">${(item.date).getMonth()}</span>
+                           <span class="event-day">${(item.date).getDay()}</span>
+                       </div>
+                       <div>
+                           <h3>Google Dev-Fest at ${item.location}</h3>
+                           <p class="event-host">Bambili Mile 7</p>
+                           <p class="event-time">${item.start} AM - ${item.Stop} PM</p>
+                           <p class="event-price">${item.price = 0 ? 'FREE' : item.price}</p>
+                       </div>
+                   </div>
+               </div>
+        `
+        html += itemHtml
+    })
 
+    document.querySelector('.events-container').innerHTML = `<h1>events</h1> ${html}`
+}
 
-/*card html
+renderEvents()
 
-*/
+function renderTodays(){
+    let html =''
+    let todaysList= Events.filter((item)=> (item.date).getDay() == date.getDay() )
+    todaysList.forEach(item=>{
+        let itemHtml = 
+        `
+             <div class="event-card">
+                      <img src=${item.image} width = '5%'
+                       alt="dev-fest"
+                       class="event-img">
+                   <span class="event-category tech">Tech</span>
+                   <button class="event-fav">&#9734;</button>
+                   <div class="event-info">
+                       <div class="event-date">
+                           <span class="event-month">${(item.date).getMonth()}</span>
+                           <span class="event-day">${(item.date).getDay()}</span>
+                       </div>
+                       <div>
+                           <h3>Google Dev-Fest at ${item.location}</h3>
+                           <p class="event-host">Bambili Mile 7</p>
+                           <p class="event-time">${item.start} AM - ${item.Stop} PM</p>
+                           <p class="event-price">${item.price = 0 ? 'FREE' : item.price}</p>
+                       </div>
+                   </div>
+               </div>
+        `
+        html += itemHtml
+    })
+    document.querySelector('.todays-container').innerHTML = `<h1>todays Events</h1> ${html}`
+    
+}
+
+renderTodays()
+
