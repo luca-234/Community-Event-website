@@ -8,14 +8,51 @@ let date = new Date;
 /* variable to decide weather there is a query for a filter or not then determine
 weather to render filtered list or Events list*/
 let isQueried = false
+//gets the form wich will act ass event 
+let formSubmit = document.querySelector('form')
 
+
+function getData(){
+    
+    form.addEventListener('submit', (e)=>{
+        e.preventDefault()
+        let eventTitle = document.getElementById('event-title')
+        let categories = document.getElementById('event-category')
+        let session = document.getElementById('event-session')
+        let startDate = document.getElementById('start-date')
+        let startTime = document.getElementById('start-time')
+        let stopTime = document.getElementById('end-time')
+        let location = document.getElementById('event-location')
+        let description = document.getElementById('event-description')
+        let image = document.getElementById('event-image')
+        
+
+        item = {
+            eventTitle,
+            startDate,
+            startTime,
+            stopTime,
+            description,
+            location,
+            categories,
+            keyword,
+            image,
+            session,
+            attendance,
+            price,
+            status: 'upcomming',
+            id : eventTitle + date
+        }
+        addToEvents(item)
+    })
+}
 
 /*discardable function used for adding random items for testing remember to remove object structure before discarding */
 function testingEvents(){
     Events = []
     item = undefined;
     ['wedding', 'orientation', 'talk', 'empowerment'].forEach((element)=>{
-        let name = 'name'
+        let eventTitle = 'name'
         let start= '2:00'
         let Stop= '6:00'
         let description= "long string for description"
@@ -28,7 +65,7 @@ function testingEvents(){
         let status = 'Upcomming'
     
         item = {
-            name,
+            eventTitle,
             date,
             start,
             Stop,
@@ -59,7 +96,7 @@ testingEvents()
 function sorting(property){
     sorted = Events.slice().sort((a, b) => (a[property]).localeCompare(b[property]));
 }
-sorting('name')
+sorting('eventTitle')
 
 /*filtering categories, location and search keyWord */
 
@@ -84,15 +121,16 @@ function filtering(category = '', location = '', search =''){
     })
     
     keyWord = Events.filter((item)=>{
-        if ((item.categories).includes(search)){
+        if ((item.categories).includes(search) || item.eventTitle === search){
             return true
         }
         
         else return false
     })
     filtered = (keyWord.concat(findLocation)).concat(categories)
+    console.log(filtered)
 }
-filtering('empowerment', 'education')
+filtering()
 
 /* function that desides wich list gets redered */
 
@@ -129,7 +167,7 @@ function renderEvents(){
         html += itemHtml
     })
 
-    document.querySelector('.events-container').innerHTML = `<h1>events</h1> ${html}`
+    document.querySelector('.events-container').innerHTML = `<h1>events</h1> `
 }
 
 renderEvents()
