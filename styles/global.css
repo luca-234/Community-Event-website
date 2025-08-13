@@ -1,0 +1,17 @@
+/* css variables and resets*/
+:root {
+  --primary-color: #2B293D;
+  --secondary-color: #FFE047;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
