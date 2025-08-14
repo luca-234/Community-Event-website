@@ -1,0 +1,6 @@
+// Embed a Google Map based on the event location
+  document.getElementById(
+    "mapEmbed"
+  ).innerHTML = `<iframe width="100%" height="300" src="https://maps.google.com/maps?q=${encodeURIComponent(
+    ev.location
+  )}&output=embed"></iframe>`;
