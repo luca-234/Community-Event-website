@@ -7,4 +7,4 @@ console.log(eventData)
   document.getElementById("location").textContent = eventData.location;
   document.getElementById("description").textContent = eventData.description;
   document.getElementById("Price").textContent = eventData.price;
-  document.getElementById("image").textContent = eventData.image;
+  document.getElementById("image").innerHTML =`<img src = ${eventData.image}>` ;
