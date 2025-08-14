@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <!-- Main section for event details -->
+    <section class="event-detail-section">
+        <!-- Button to go back to events list -->
+        <button id="backBtn" class="back-btn">&larr; Back to Events</button>
+
+        <!-- Event title -->
+        <h1 id="detailTitle"></h1>
+        <!-- Event date and time -->
+        <p id="detailDatetime"></p>
+        <!-- Event location -->
+        <p id="detailLocation"></p>
+        <!-- Event description -->
+        <p id="detailDescription"></p>
+        <!-- Event organizer -->
+        <p id="detailOrganizer"></p>
+
+        <!-- Ticket information, hidden by default -->
+        <div id="ticketInfo" class="hidden">
+            <h3>Tickets</h3>
+            <p id="ticketName"></p>
+            <p id="ticketPrice"></p>
+        </div>
+
+        <!-- Container for event image -->
+        <div id="eventImageContainer"></div>
+        <!-- Container for embedded map -->
+        <div id="mapEmbed" class="map-container"></div>
+
+        <!-- Section for sharing the event -->
+        <div class="share-section">
+            <h3>Share this Event</h3>
+            <!-- Social media share buttons -->
+            <button class="share-btn" id="shareFacebook">Facebook</button>
+            <button class="share-btn" id="shareTwitter">Twitter</button>
+            <button class="share-btn" id="shareWhatsApp">WhatsApp</button>
+            <button class="share-btn" id="copyLink">Copy Link</button>
+        </div>
+    </section>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script/event.js"></script>
+</body>
+</html>
