@@ -1,53 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Details</title>
-    <!-- Link to external stylesheet -->
-    <link rel="stylesheet" href="styles/styles.css">
-</head>
-<body>
-    <!-- Main section for event details -->
-    <section class="event-detail-section">
-        <!-- Button to go back to events list -->
-        <button id="backBtn" class="back-btn">&larr; Back to Events</button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Event Details</title>
+        <!-- Link to external stylesheet -->
+        <link rel="stylesheet" href="styles/styles.css">
+        <style>
+        /* styles/styles.css */
 
-        <!-- Event title -->
-        <h1 id="detailTitle"></h1>
-        <!-- Event date and time -->
-        <p id="detailDatetime"></p>
-        <!-- Event location -->
-        <p id="detailLocation"></p>
-        <!-- Event description -->
-        <p id="detailDescription"></p>
-        <!-- Event organizer -->
-        <p id="detailOrganizer"></p>
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f8fa;
+    margin: 0;
+    padding: 0;
+}
 
-        <!-- Ticket information, hidden by default -->
-        <div id="ticketInfo" class="hidden">
-            <h3>Tickets</h3>
-            <p id="ticketName"></p>
-            <p id="ticketPrice"></p>
-        </div>
+.event-detail-section {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 1px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+}
 
-        <!-- Container for event image -->
-        <div id="eventImageContainer"></div>
-        <!-- Container for embedded map -->
-        <div id="mapEmbed" class="map-container"></div>
+.back-btn {
+    background: #e4e7ec;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    transition: background 0.2s;
+}
+.back-btn:hover {
+    background: #d1d5db;
+}
 
-        <!-- Section for sharing the event -->
-        <div class="share-section">
-            <h3>Share this Event</h3>
-            <!-- Social media share buttons -->
-            <button class="share-btn" id="shareFacebook">Facebook</button>
-            <button class="share-btn" id="shareTwitter">Twitter</button>
-            <button class="share-btn" id="shareWhatsApp">WhatsApp</button>
-            <button class="share-btn" id="copyLink">Copy Link</button>
-        </div>
-    </section>
+h1 {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: #1a202c;
+}
 
-    <!-- Link to external JavaScript file -->
-    <script src="script/event.js"></script>
-</body>
+p {
+    margin: 8px 0;
+    color: #444;
+}
+
+#ticketInfo {
+    margin: 20px 0;
+    padding: 16px;
+    background: #f1f5f9;
+    border-radius: 8px;
+}
+
+#eventImageContainer img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+.map-container {
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.share-section {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #e4e7ec;
+}
+
+.share-section h3 {
+    margin-bottom: 12px;
+    color: #2d3748;
+}
+
+.share-btn {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 14px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+.share-btn:hover {
+    background: #1e40af;
+}
+    </style>
+    </head>
+    <body>
+        <!-- Main section for event details -->
+        <section class="event-detail-section">
+            <!-- Button to go back to events list -->
+            <button id="backBtn" class="back-btn">&larr; Back to Events</button>
+
+            <!-- Event title -->
+            <h1 id="eventTitle"></h1>
+            <!-- Event date and time -->
+            <p id="startDate"></p>
+            <p id="startTime"></p>
+            <p id="startDate"></p>
+            <!-- Event description -->
+            <p id="description"></p>
+            <!-- Event location -->
+            <p id="location"></p>
+            <!-- Event organizer -->
+            <p id="Status"></p>
+
+            <!-- Ticket information, hidden by default -->
+            <div id="ticketInfo" class>
+                <h3>Tickets</h3>
+                <p id="ticketName"></p>
+                <p id="Price"></p>
+            </div>
+
+            <!-- Container for event image -->
+            <div id="image"></div>
+            <!-- Container for embedded map -->
+            <div id="mapEmbed" class="map-container"></div>
+
+            <!-- Section for sharing the event -->
+        </section>
+
+        <!-- Link to external JavaScript file -->
+        <script src="script/event.js"></script>
+    </body>
 </html>
