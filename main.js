@@ -1,117 +1,101 @@
+let eventData = JSON.parse(localStorage.getItem('eventData')) || {}
 /* data collection */
 let Events = JSON.parse(localStorage.getItem('events')) || [
-    
     {
-        eventTitle: "Photography Workshop",
-        startDate: "2025-09-12",
+        eventTitle: "Annual Sports Day",
+        startDate: "2025-09-01",
         startTime: "09:00",
-        stopTime: "13:00",
-        description: "Learn photography techniques from professionals.",
-        location: "City Art Center",
-        categories: ["Art", "Education"],
-        keyword: ["photography", "learning"],
-        image: "photo-workshop.jpg",
+        stopTime: "17:00",
+        description: "A day full of exciting sports competitions for all ages.",
+        location: "Bamenda I",
+        categories: ["Sports", "Community"],
+        keyword: ["sports", "education"],
+        image: "./images/sportimg.jpg",
         session: "Morning",
         attendance: 0,
-        price: 30,
+        price: 0,
         status: "upcoming",
-        id: "Photography_Workshop_2025-09-12"
+        id: "Annual_Sports_Day_2025-09-01"
     },
     {
-        eventTitle: "Book Fair",
-        startDate: "2025-11-20",
+        eventTitle: "Tech Innovators Conference",
+        startDate: "2025-10-15",
         startTime: "10:00",
-        stopTime: "18:00",
-        description: "A gathering of book lovers and publishers.",
-        location: "Convention Center",
-        categories: ["Education", "Literature"],
-        keyword: ["books", "reading"],
-        image: "book-fair.jpg",
+        stopTime: "16:00",
+        description: "A conference bringing together tech leaders and innovators.",
+        location: "Bamenda III",
+        categories: ["Technology", "Business"],
+        keyword: ["tech", "innovation"],
+        image: "./images/techimg.jpg",
         session: "Full Day",
         attendance: 0,
-        price: 5,
+        price: 50,
         status: "upcoming",
-        id: "Book_Fair_2025-11-20"
+        id: "Tech_Innovators_Conference_2025-10-15"
     },
     {
-        eventTitle: "Film Premiere Night",
-        startDate: "2025-08-28",
-        startTime: "20:00",
-        stopTime: "23:30",
-        description: "Exclusive premiere of a new blockbuster movie.",
-        location: "CineMax Theatre",
-        categories: ["Entertainment", "Film"],
-        keyword: ["movies", "cinema"],
-        image: "film-premiere.jpg",
+        eventTitle: "City Marathon",
+        startDate: "2025-11-05",
+        startTime: "06:00",
+        stopTime: "14:00",
+        description: "Join runners from around the country in our annual marathon.",
+        location: "Bamenda II",
+        categories: ["Sports", "Health"],
+        keyword: ["marathon", "fitness"],
+        image: "./images/dance.jpg",
+        session: "Morning",
+        attendance: 0,
+        price: 20,
+        status: "upcoming",
+        id: "City_Marathon_2025-11-05"
+    },
+    {
+        eventTitle: "Art & Culture Festival",
+        startDate: "2025-08-20",
+        startTime: "12:00",
+        stopTime: "20:00",
+        description: "Celebrating art, music, and culture from around the world.",
+        location: "Bamenda III",
+        categories: ["Art", "Music"],
+        keyword: ["art", "culture"],
+        image: "./images/arts.jpeg",
+        session: "Afternoon",
+        attendance: 0,
+        price: 10,
+        status: "upcoming",
+        id: "Art_&_Culture_Festival_2025-08-20"
+    },
+    {
+        eventTitle: "Startup Pitch Night",
+        startDate: "2025-09-25",
+        startTime: "18:00",
+        stopTime: "21:00",
+        description: "Watch entrepreneurs pitch their startups to investors.",
+        location: "Bamenda I",
+        categories: ["Business", "Entrepreneurship"],
+        keyword: ["startups", "investment"],
+        image: "./images/techimg.jpg",
         session: "Evening",
         attendance: 0,
-        price: 12,
-        status: "upcoming",
-        id: "Film_Premiere_Night_2025-08-28"
-    },
-    {
-        eventTitle: "Yoga & Wellness Retreat",
-        startDate: "2025-09-18",
-        startTime: "08:00",
-        stopTime: "16:00",
-        description: "A relaxing retreat focused on yoga and mindfulness.",
-        location: "Mountain Resort",
-        categories: ["Health", "Wellness"],
-        keyword: ["yoga", "meditation"],
-        image: "yoga-retreat.jpg",
-        session: "Full Day",
-        attendance: 0,
-        price: 40,
-        status: "upcoming",
-        id: "Yoga_&_Wellness_Retreat_2025-09-18"
-    },
-    {
-        eventTitle: "Coding Bootcamp",
-        startDate: "2025-10-05",
-        startTime: "09:00",
-        stopTime: "17:00",
-        description: "Intensive coding workshop for beginners.",
-        location: "Tech Academy",
-        categories: ["Technology", "Education"],
-        keyword: ["coding", "programming"],
-        image: "coding-bootcamp.jpg",
-        session: "Full Day",
-        attendance: 0,
-        price: 60,
-        status: "upcoming",
-        id: "Coding_Bootcamp_2025-10-05"
-    },
-    {
-        eventTitle: "Science Expo",
-        startDate: "2025-11-02",
-        startTime: "10:00",
-        stopTime: "17:00",
-        description: "An exhibition of scientific innovations and projects.",
-        location: "Science Museum",
-        categories: ["Education", "Science"],
-        keyword: ["science", "innovation"],
-        image: "science-expo.jpg",
-        session: "Full Day",
-        attendance: 0,
         price: 0,
         status: "upcoming",
-        id: "Science_Expo_2025-11-02"
+        id: "Startup_Pitch_Night_2025-09-25"
     },
     {
-        eventTitle: "Local Farmers Market",
-        startDate: "2025-08-22",
-        startTime: "07:00",
-        stopTime: "14:00",
-        description: "Fresh produce from local farmers and artisans.",
-        location: "Town Square",
-        categories: ["Food", "Community"],
-        keyword: ["market", "local"],
-        image: "farmers-market.jpg",
-        session: "Morning",
+        eventTitle: "Cooking Masterclass",
+        startDate: "2025-10-10",
+        startTime: "14:00",
+        stopTime: "17:00",
+        description: "Learn from professional chefs in this interactive cooking session.",
+        location: "Bamenda II",
+        categories: ["Food", "Education"],
+        keyword: ["cooking", "learning"],
+        image: "./images/cookingimg.jpg",
+        session: "Afternoon",
         attendance: 0,
-        price: 0,
+        price: 15,
         status: "upcoming",
-        id: "Local_Farmers_Market_2025-08-22"
+        id: "Cooking_Masterclass_2025-10-10"
     }
 ];
 
@@ -131,20 +115,6 @@ const addToEvents = (item)=> {
         Events.push(item)
         localStorage.setItem('events', JSON.stringify(Events))
     }
-}
-
-let selectEvent = {}
-
-function findItem(id){
-   let found = 0
-   Events.forEach(item =>{
-        if (item.id === id){
-            found = item
-            return item
-        }
-    })
-    console.log(found)
-    return found
 }
 
 
@@ -290,8 +260,9 @@ function renderEvents(){
         const longMonth = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
         let itemHtml = 
         `
+        <a href="./event.html">
              <div class="event-card" data-item-id=${item.id}>
-                      <img src='./sample.jpg' width = '5%'
+                      <img src=${item.image} width = '5%'
                        
                        class="event-img">
                    <span class="event-category tech">Tech</span>
@@ -309,6 +280,7 @@ function renderEvents(){
                        </div>
                    </div>
                </div>
+        </a>
         `
         html += itemHtml
     })
@@ -322,7 +294,9 @@ function renderTodays(){
         let itemDate =new Date(item.startDate)
         const formattedDate = itemDate.toISOString().slice(0, 10);
         const shortMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
-        return (/*(itemDate.getDay())*/'2025-12-12' === formattedDate )
+        if(/*(itemDate.getDay())*/'2025-12-12' === /*formattedDate*/ '2025-09-01' ){
+            return item
+        }
     } 
 )
     todaysList.forEach(item=>{
@@ -370,7 +344,6 @@ renderPage()
 
 // an event renderd on page (any)
 let eventClick = document.querySelectorAll(".event-card")
-let eventData = JSON.parse(localStorage.getItem('eventData')) || {}
 
 eventClick.forEach(card=>{
     card.addEventListener('click', ()=>{
