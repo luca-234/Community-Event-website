@@ -35,11 +35,11 @@
                     happening here in Bamenda.
                 </h2>
                 <div class="search-bar">
-                    <input type="text"
+                    <input type="text" id = 'keyword'
                         placeholder="Search Events, Categories, Location..." />
-                    <button>Search</button>
-                    <select>
-                        <option>Categories</option>
+                    <button id="query">Search</button>
+                    <select id="select-category">
+                        <option value="Category">Categories</option>
                         <option value="Music">Music</option>
                         <option value="Sports">Sports</option>
                         <option value="Arts">Arts</option>
@@ -50,13 +50,13 @@
                         <option value="Technology">Technology</option>
                         <option value="Business">Business</option>
                     </select>
-                    <select>
-                        <option>location</option>
+                    <select id="select-location">
+                        <option value="location">location</option>
                         <option value="Bamenda I">Bamenda I</option>
                         <option value="Bamenda II">Bamenda II</option>
                         <option value="Bamenda III">Bamenda III</option>
                     </select>
-                    <input type="text" placeholder="Date range" />
+                    <input type="date" placeholder="Date range" id="date-search"/>
                 </div>
             </div>
         </section>
