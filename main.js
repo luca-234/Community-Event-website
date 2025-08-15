@@ -109,13 +109,13 @@ weather to render filtered list or Events list*/
 let isQueried = false
 //gets the form wich will act ass event 
 let formSubmit = document.querySelector('.save-btn')
-
 const addToEvents = (item)=> {
     if(item){
         Events.push(item)
         localStorage.setItem('events', JSON.stringify(Events))
     }
 }
+
 
 
 formSubmit.addEventListener('click', ()=>{
@@ -149,39 +149,12 @@ function getData(){
         attendance: 0,
         price: 0,
         status: 'upcomming',
-        id : eventTitle + date
+        id : ((eventTitle + startDate).split(' ').join(''))
     }
-
     addToEvents(item)
-    // form.addEventListener('submit', (e)=>{
-    //     e.preventDefault()
-    // })
+    renderPage()
 }
 
-/*discardable function used for adding random items for testing remember to remove object structure before discarding */
-// function testingEvents(){
-//     item = undefined;
-//     ['wedding', 'orientation', 'talk', 'empowerment'].forEach((_)=>{
-
-//         item = {
-//         eventTitle: "Local Farmers Market",
-//         startDate: "2025-08-22",
-//         startTime: "07:00",
-//         stopTime: "14:00",
-//         description: "Fresh produce from local farmers and artisans.",
-//         location: "Town Square",
-//         categories: ["Food", "Community"],
-//         keyword: ["market", "local"],
-//         image: "farmers-market.jpg",
-//         session: "Morning",
-//         attendance: 0,
-//         price: 0,
-//         status: "upcoming",
-//         id: "Local_Farmers_Market_2025-08-22"
-//         }
-//         addToEvents(item)
-//     })
-// }
 
 
 // testingEvents()
@@ -189,7 +162,6 @@ function getData(){
 function sorting(property){
     sorted = Events.slice().sort((a, b) => (a[property]).localeCompare(b[property]));
 }
-sorting('eventTitle')
 
 /*filtering categories, location and search keyWord */
 
@@ -257,7 +229,7 @@ function renderEvents(){
     List().forEach(item=>{
         let itemDate = new Date(item.startDate)
         const shortMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
-        const longMonth = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
+        // const longMonth = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(itemDate);
         let itemHtml = 
         `
         <a href="./event.html">
@@ -281,7 +253,7 @@ function renderEvents(){
                    </div>
                </div>
         </a>
-        `
+               `
         html += itemHtml
     })
 
@@ -331,8 +303,23 @@ function renderTodays(){
 }
 
 function renderPage(){
+    sorting('eventTitle')
     renderEvents()
     renderTodays()
+    // an event renderd on page (any)
+let eventClick = document.querySelectorAll(".event-card")
+/* ading event listener for clicking on cart */
+eventClick.forEach(card=>{
+    card.addEventListener('click', ()=>{
+        console.log(card)
+        Events.forEach(event=>{
+            if (event.id === card.dataset.itemId){
+                localStorage.setItem('eventData', JSON.stringify(event))
+                console.log(eventData)
+            }
+        })
+    })
+})
 }
 
 //button to initiate a select qurry
@@ -342,18 +329,6 @@ queryButton.addEventListener('click',()=>{
 })
 renderPage()
 
-// an event renderd on page (any)
-let eventClick = document.querySelectorAll(".event-card")
 
-eventClick.forEach(card=>{
-    card.addEventListener('click', ()=>{
-        Events.forEach(event=>{
-            if (event.id === card.dataset.itemId){
-                localStorage.setItem('eventData', JSON.stringify(event))
-                console.log(eventData)
-            }
-        })
-    })
-})
 
 //testing branch
