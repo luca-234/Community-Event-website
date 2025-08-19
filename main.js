@@ -132,8 +132,9 @@ function getData(){
     let stopTime = document.getElementById('end-time').value
     let location = document.getElementById('event-location').value
     let description = document.getElementById('event-description').value
-    let image = document.getElementById('event-image').value
+    let imageElem = document.getElementById('event-image')
     
+    let image = URL.createObjectURL(imageElem.files[0])
 
     item = {
         eventTitle,
@@ -277,7 +278,7 @@ function renderTodays(){
         let itemHtml = 
         `
              <div class="event-card" onclick="findItem(${item.id})">
-                      <img src='./sample.jpg' width = '5%'
+                      <img src=${item.image} width = '5%'
                        alt="dev-fest"
                        class="event-img">
                    <span class="event-category tech">${item.categories}</span>
