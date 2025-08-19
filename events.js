@@ -1,5 +1,4 @@
 let eventData = JSON.parse(localStorage.getItem('eventData'))
-console.log(eventData)
 
 // Populate event details in the respective HTML elements
   document.getElementById("eventTitle").textContent = eventData.eventTitle;

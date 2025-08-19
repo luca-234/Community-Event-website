@@ -237,7 +237,7 @@ function renderEvents(){
                       <img src=${item.image} width = '5%'
                        
                        class="event-img">
-                   <span class="event-category tech">Tech</span>
+                   <span class="event-category tech">${item.categories}</span>
                    <button class="event-fav">&#9734;</button>
                    <div class="event-info">
                        <div class="event-date">
@@ -264,9 +264,9 @@ function renderTodays(){
     let html =''
     let todaysList= Events.filter((item)=>{
         let itemDate =new Date(item.startDate)
-        const formattedDate = itemDate.toISOString().slice(0, 10);
+        const formattedDate = date.toISOString().slice(0, 10);
         const shortMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
-        if(/*(itemDate.getDay())*/'2025-12-12' === /*formattedDate*/ '2025-09-01' ){
+        if( formattedDate=== item.startDate){
             return item
         }
     } 
@@ -280,7 +280,7 @@ function renderTodays(){
                       <img src='./sample.jpg' width = '5%'
                        alt="dev-fest"
                        class="event-img">
-                   <span class="event-category tech">Tech</span>
+                   <span class="event-category tech">${item.categories}</span>
                    <button class="event-fav">&#9734;</button>
                    <div class="event-info">
                        <div class="event-date">
@@ -288,8 +288,8 @@ function renderTodays(){
                            <span class="event-day">${shortMonth}</span>
                        </div>
                        <div>
-                           <h3>Google Dev-Fest at ${item.location}</h3>
-                           <p class="event-host">Bambili Mile 7</p>
+                           <h3>${item.eventTitle}</h3>
+                           <p class="event-host">${item.location}</p>
                            <p class="event-time">${item.start} AM - ${item.Stop} PM</p>
                            <p class="event-price">${item.price = 0 ? 'FREE' : item.price}</p>
                        </div>
@@ -298,7 +298,7 @@ function renderTodays(){
         `
         html += itemHtml
     })
-    document.querySelector('.todays').innerHTML = html + '<hr>'
+    document.querySelector('.todays').innerHTML = todaysList[0]? html : '<p> No Event today</>'
     
 }
 
@@ -306,6 +306,7 @@ function renderPage(){
     sorting('eventTitle')
     renderEvents()
     renderTodays()
+
     // an event renderd on page (any)
 let eventClick = document.querySelectorAll(".event-card")
 /* ading event listener for clicking on cart */
