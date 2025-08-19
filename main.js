@@ -132,8 +132,9 @@ function getData(){
     let stopTime = document.getElementById('end-time').value
     let location = document.getElementById('event-location').value
     let description = document.getElementById('event-description').value
-    let image = document.getElementById('event-image').value
+    let imageElem = document.getElementById('event-image')
     
+    let image = URL.createObjectURL(imageElem.files[0])
 
     item = {
         eventTitle,
@@ -276,8 +277,9 @@ function renderTodays(){
         const shortMonth = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(itemDate);
         let itemHtml = 
         `
+            <a href="./event.html">
              <div class="event-card" onclick="findItem(${item.id})">
-                      <img src='./sample.jpg' width = '5%'
+                      <img src=${item.image} width = '5%'
                        alt="dev-fest"
                        class="event-img">
                    <span class="event-category tech">${item.categories}</span>
@@ -291,10 +293,11 @@ function renderTodays(){
                            <h3>${item.eventTitle}</h3>
                            <p class="event-host">${item.location}</p>
                            <p class="event-time">${item.start} AM - ${item.Stop} PM</p>
-                           <p class="event-price">${item.price = 0 ? 'FREE' : item.price}</p>
+                           <p class="event-price">${item.price == 0 ? 'FREE' : (item.price)*500 +' XAF'}</p>
                        </div>
                    </div>
                </div>
+               </a>
         `
         html += itemHtml
     })
