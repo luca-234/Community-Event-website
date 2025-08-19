@@ -95,6 +95,7 @@ let Events = JSON.parse(localStorage.getItem('events')) || [
         attendance: 0,
         price: 15,
         status: "upcoming",
+        preciseLocation: 'mile 2',
         id: "Cooking_Masterclass_2025-10-10"
     }
 ];
@@ -132,6 +133,7 @@ function getData(){
     let stopTime = document.getElementById('end-time').value
     let location = document.getElementById('event-location').value
     let description = document.getElementById('event-description').value
+    let preciseLocation = document.getElementById('eventLocation').value
     let imageElem = document.getElementById('event-image')
     
     let image = URL.createObjectURL(imageElem.files[0])
@@ -149,6 +151,7 @@ function getData(){
         session,
         attendance: 0,
         price: 0,
+        preciseLocation,
         status: 'upcomming',
         id : ((eventTitle + startDate).split(' ').join(''))
     }

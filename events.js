@@ -4,7 +4,7 @@ let eventData = JSON.parse(localStorage.getItem("eventData"));
 document.getElementById(
   "mapEmbed"
 ).innerHTML = `<iframe width="100%" height="300" src="https://maps.google.com/maps?q=${encodeURIComponent(
-  eventData.location
+  eventData.preciseLocstion
 )}&output=embed"></iframe>`;
 
 // Populate event details in the respective HTML elements

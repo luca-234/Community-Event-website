@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventify Auth</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="auth-container">
+  <!-- Left Side Branding -->
+  <div class="auth-brand">
+    <img src="logo.png" alt="EventBam Logo" class="logo" />
+    <h2>Discover tailored events.</h2>
+    <p id="brand-text">Sign up for personalized recommendations today!</p>
+  </div>
+
+  <!-- Right Side Forms -->
+  <div class="auth-forms">
+    
+    <!-- Create Account Form -->
+    <form id="signup-form" class="form active">
+      <h2>Create Account</h2>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Create Account</button>
+      <p>Already have an account? <a href="#" id="to-login">Log in</a></p>
+    </form>
+
+    <!-- Login Form -->
+    <form id="login-form" class="form">
+      <h2>Login</h2>
+      <input type="email" placeholder="Email Address" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Login</button>
+      <p>Don’t have an account? <a href="#" id="to-signup">Sign up</a></p>
+    </form>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
