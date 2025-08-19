@@ -1,0 +1,138 @@
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7f7fa;
+  margin: 0;
+  color: #222;
+}
+
+.header {
+  background: #23223b;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.event-banner {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto 0 auto;
+  border-radius: 12px;
+  /* overflow: hidden; */
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+
+.event-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin: 30px 0 10px 0;
+  text-align: center;
+}
+.event-actions{
+    flex: 1 1 auto;
+    justify-content: flex-end;
+}
+
+
+.event-details {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  padding: 32px;
+}
+
+.event-details h2 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  color: #23223b;
+}
+
+.event-details .date-time,
+.event-details .location,
+.event-details .ticket-info {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.event-details .icon {
+  color: #f7b731;
+  font-size: 1.3em;
+}
+
+.event-details .subscribe-btn {
+  background: #f7b731;
+  color: #23223b;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 18px 0;
+  transition: background 0.2s;
+}
+
+.event-details .subscribe-btn:hover {
+  background: #e1a825;
+}
+
+.event-description {
+  margin-top: 24px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.event-description strong {
+  color: #23223b;
+}
+
+.event-description em {
+  color: #555;
+}
+
+.event-description ul {
+  margin: 16px 0 0 20px;
+  padding: 0;
+}
+
+.event-description li {
+  margin-bottom: 8px;
+}
+
+.hosted-by {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.hosted-by .host-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.hosted-by .host-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.footer {
+  background: #23223b;
+  color: #fff;
+  padding: 32px 0 16px 0;
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 48px;
+}
+
+@media (max-width: 700px) {
+  .event-details {
+    padding: 16px;
+  }
+  .event-title {
+    font-size: 1.4rem;
+  }
+}
