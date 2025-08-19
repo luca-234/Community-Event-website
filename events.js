@@ -13,4 +13,8 @@ document.getElementById("startDate").textContent = eventData.startDate;
 document.getElementById("location").textContent = eventData.location;
 document.getElementById("description").textContent = eventData.description;
 document.getElementById("Price").textContent = eventData.price;
-document.getElementById("image").innerHTML = `<img src = ${eventData.image}>`;
+document.getElementById("startTime").textContent = eventData.startTime;
+document.getElementById("stopTime").textContent = eventData.stopTime;
+document.getElementById(
+  "image"
+).innerHTML = `<img src = ${eventData.image} alt="Event Image" class="event-image" >`;
