@@ -1,0 +1,98 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #141414;
+}
+
+.auth-container {
+  display: flex;
+  background: white;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.auth-brand {
+  flex: 1;
+  background: #1e1e3f;
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-brand .logo {
+  width: 120px;
+  margin-bottom: 2rem;
+}
+
+.auth-forms {
+  flex: 1;
+  padding: 2rem;
+}
+
+.form {
+  display: none;
+  flex-direction: column;
+}
+
+.form.active {
+  display: flex;
+}
+
+form h2 {
+  margin-bottom: 1rem;
+}
+
+input {
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background: #1e1e3f;
+  color: rgb(235, 231, 231);
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #070708;
+}
+
+p {
+  margin-top: 1rem;
+}
+
+a {
+  color: #1e1e3f;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive for smaller devices */
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+  }
+
+  .auth-brand {
+    align-items: center;
+    text-align: center;
+  }
+}
