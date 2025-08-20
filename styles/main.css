@@ -35,14 +35,16 @@
   font-weight: 700;
 }
 
+#keyword {
+  height: 2.5rem;
+}
 .search-bar {
   display: flex;
   gap: 15px;
   justify-content: center;
+  align-items: center;
   margin-top: 10px;
 }
-
-.search-bar input,
 .search-bar select,
 .search-bar button {
   padding: 10px 15px;
@@ -56,6 +58,15 @@
   color: #fff;
   cursor: pointer;
   font-weight: 600;
+}
+
+.date-search {
+  width: 4rem;
+  padding: 1px;
+  height: 2.1rem;
+}
+.date-container{
+  display: flex;
 }
 .events-container {
   padding: 20px;
@@ -116,7 +127,7 @@ img{
 
 .event-category {
   position: absolute;
-  top: 92px;
+  top: 90px;
   left: 1px;
   padding: 4px 12px;
   border-radius: 6px;
@@ -124,6 +135,19 @@ img{
   font-weight: 600;
   color: #222;
   background: #ffd600;
+  z-index: 2;
+}
+
+.event-status {
+  position: absolute;
+  top: 2px;
+  left: 1px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  background: hwb(204 0% 60% / 0.859);
   z-index: 2;
 }
 
