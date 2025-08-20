@@ -13,6 +13,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     image: "./images/sportimg.jpg",
     session: "Morning",
     attendance: 0,
+    preciseLocation: "big mankon",
     price: 0,
     status: "upcoming",
     id: "Annual_Sports_Day_2025-09-01",
@@ -30,6 +31,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     session: "Full Day",
     attendance: 0,
     price: 50,
+    preciseLocation: "mile 5",
     status: "upcoming",
     id: "Tech_Innovators_Conference_2025-10-15",
   },
@@ -47,6 +49,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     attendance: 0,
     price: 20,
     status: "upcoming",
+    preciseLocation: "bambily",
     id: "City_Marathon_2025-11-05",
   },
   {
@@ -62,6 +65,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     session: "Afternoon",
     attendance: 0,
     price: 10,
+    preciseLocation: "nyanga hall",
     status: "upcoming",
     id: "Art_&_Culture_Festival_2025-08-20",
   },
@@ -76,6 +80,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     keyword: ["startups", "investment"],
     image: "./images/techimg.jpg",
     session: "Evening",
+    preciseLocation: "mile 2",
     attendance: 0,
     price: 0,
     status: "upcoming",
@@ -310,9 +315,7 @@ function renderTodays() {
                        <div>
                            <h3>${item.eventTitle}</h3>
                            <p class="event-host">${item.location}</p>
-                           <p class="event-time">${item.start} AM - ${
-      item.Stop
-    } PM</p>
+                           <p class="event-time">${item.startTime}- ${item.stopTime}</p>
                            <p class="event-price">${
                              item.price == 0
                                ? "FREE"

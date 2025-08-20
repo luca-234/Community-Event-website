@@ -12,6 +12,11 @@ justify-content: space-between;
 align-items: center;
 color: white;
 }
+u{
+font-size: 1rem;
+font-weight: bold;
+color: orange;
+}
 a{
 color: white;
 text-decoration: none;
