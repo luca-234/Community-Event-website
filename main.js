@@ -162,9 +162,24 @@ function getData() {
   renderPage();
 }
 
+function determineStatus(){
+  let maped = Events.map((event)=>{
+    let startDate = new Date(event.startDate)
+    if (startDate.toDateString() < date.toDateString()){
+      event.status = 'Past'
+    }
+    else if(startDate.toDateString() > date.toDateString()){
+      event.status = 'upcomming'
+    }
+    else {
+      event.status = 'Today'
+    }
+  } )
+}
 // testingEvents()
 /*sorting function property to sort  by is passed */
 function sorting(property) {
+  determineStatus()
   sorted = Events.slice().sort((a, b) =>
     a[property].localeCompare(b[property])
   );
@@ -172,7 +187,7 @@ function sorting(property) {
 
 /*filtering categories, location and search keyWord */
 
-function filtering(category = "", location = "", search = "", date = "") {
+function filtering(category = "", location = "", search = "", start = "" , stop = "") {
   let categories = [];
   let findLocation = [];
   let keyWord = [];
@@ -197,7 +212,7 @@ function filtering(category = "", location = "", search = "", date = "") {
   });
 
   foundDates = Events.filter((item) => {
-    if (item.startDate === date) {
+    if (item.startDate >= start && item.startDate <= stop) {
       return true;
     } else return false;
   });
@@ -209,14 +224,15 @@ function List() {
   let category = document.querySelector("#select-category").value;
   let location = document.getElementById("select-location").value;
   let keyWord = document.querySelector("#keyword").value;
-  let date = document.querySelector("#date-search").value;
-  if (!!keyWord || category != "Category" || location != "location" || !!date) {
+  let startDate = document.querySelector(".start-date").value;
+  let stopDate = document.querySelector(".stop-date").value;
+  if (!!keyWord || category != "Category" || location != "location" || !!startDate) {
     isQueried = true;
   } else {
     isQueried = false;
   }
 
-  filtering(category, location, keyWord, date);
+  filtering(category, location, keyWord, startDate, stopDate);
   return isQueried ? filtered : sorted;
 }
 
@@ -232,9 +248,8 @@ function renderEvents() {
     let itemHtml = `
         <a href="./event.html">
              <div class="event-card" data-item-id=${item.id}>
-                      <img src=${item.image} width = '5%'
-                       
-                       class="event-img">
+                  <img src=${item.image} width = '5%' class="event-img">
+                   <span class="event-status tech">${item.status}</span>
                    <span class="event-category tech">${item.categories}</span>
                    <button class="event-fav">&#9734;</button>
                    <div class="event-info">
@@ -246,7 +261,7 @@ function renderEvents() {
                            <h3>${item.eventTitle} at</h3>
                            <p class="event-host">${item.location}</p>
                            <p class="event-time">${item.startTime} AM - ${
-      item.stopTime
+ item.stopTime
     } PM</p>
                            <p class="event-price">${
                              item.price == 0
@@ -325,11 +340,9 @@ function renderPage() {
   /* ading event listener for clicking on cart */
   eventClick.forEach((card) => {
     card.addEventListener("click", () => {
-      console.log(card);
       Events.forEach((event) => {
         if (event.id === card.dataset.itemId) {
           localStorage.setItem("eventData", JSON.stringify(event));
-          console.log(eventData);
         }
       });
     });
