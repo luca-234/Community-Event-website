@@ -19,3 +19,4 @@ document.getElementById("stopTime").textContent = eventData.stopTime;
 document.getElementById(
   "image"
 ).innerHTML = `<img src = ${eventData.image} alt="Event Image" class="event-image" >`;
+

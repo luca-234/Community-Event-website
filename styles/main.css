@@ -216,6 +216,7 @@ img{
                 border-radius: 10px;
                 background-color:rgba(26, 25, 25, 0.692);
                 bottom: 1px ;
+                z-index: 3;
                 /* overflow-wrap: break-word; */
                 
             }
