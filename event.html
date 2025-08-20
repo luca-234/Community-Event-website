@@ -9,10 +9,11 @@
         <link rel="stylesheet" href="nav.css">
     </head>
     <body>
-    <nav>
-       <nav>
+        <nav>
+            <nav>
                 <div>
-                <a href=""><img src="image logo.png" alt="EVENTBAM" class="image-logo"></a>
+                    <a href><img src="image logo.png" alt="EVENTBAM"
+                            class="image-logo"></a>
                 </div>
                 <div>
                     <a href>Home</a>
@@ -25,38 +26,46 @@
                     </button>
                 </div>
             </nav>
-    </nav>
+        </nav>
         <main>
 
             <section class="event-details">
-                <button id="backBtn" class="back-btn">&larr; Back to
-                    Events</button>
-               
+                <!-- <button id="backBtn" class="back-btn">&larr; Back to
+                    Events</button> -->
+
                 <div class="image-container"
                     id="image"><!-- Event image dynamically inserted --></div>
                 <h1 id="eventTitle"> </h1>
                 <div class="grid-container">
                     <div class="event-info">
-                    <div class="date-time">
-                        <p id="startDate"></p>
-                        <p id="startTime"></p>-<p id="stopTime"></p>
-                        <a href="#">+ Add to Calendar</a>
+                        <h3>Date and Time</h3>
+                        <p>
+                            <br><label><img src="./Icons/date.svg" alt="data icon"
+                                    width="15px" height="15px"> </label><span
+                                id="startDate"></span><br><br>
+                            <label><img src="./Icons/clock.svg"
+                                    alt="clock icon" width="15px"
+                                    height="15px"></label> <span
+                                id="startTime"></span>-<span
+                                id="stopTime"></span>
+                        </p>
+
+                        <a href="#"><span>+ Add to Calendar</span></a>
+
                     </div>
-                    <button class="subscribe-btn">Subscribe</button>
-                    <div class="ticket-info" id="ticketInfo">
-                        <div><h3>Ticket Information</h3></div>
-                        <p>standard ticket:</p>
-                        <p id="Price"></p>
+                    <div>
+                        <button class="subscribe-btn">Subscribe</button>
+                        <h3>Ticket Information</h3>
+                        <p>standard ticket: <span id="Price"></span></p>
+
                     </div>
                 </div>
                 <div class="location">
                     <h3>Location:</h3>
                     <div><p id="location"></p></div>
-                    <p></p>
                     <div id="mapEmbed" class="map-container"></div>
                 </div>
-                </div>
-                
+
                 <div class="description">
                     <h3>Event Description</h3>
                     <p id="description"></p>
@@ -71,7 +80,7 @@
                 </div>
             </section>
         </main>
-<footer>
+        <footer>
             <div class="footer-div1">
                 <div>
                     <div class="headine">
