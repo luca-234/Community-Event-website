@@ -9,6 +9,7 @@ document.getElementById(
 
 // Populate event details in the respective HTML elements
 document.getElementById("eventTitle").textContent = eventData.eventTitle;
+document.getElementById("organizer").textContent = eventData.organizer;
 document.getElementById("startDate").textContent = eventData.startDate;
 document.getElementById("location").textContent = eventData.location;
 document.getElementById("description").textContent = eventData.description;

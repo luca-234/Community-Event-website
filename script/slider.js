@@ -10,16 +10,16 @@ document
       eventForm.style.display = "none";
     }
   });
-// favorite-btn click event
-document
-.getAnimations("fav-eve")
-.addEventListener("click", function () {
-  // Toggle the favorite state
-  const favButton = document.getElementById("fav-eve");
-  if(favButton.style.color === "red") {
-    favButton.style.color = "black"; // Unfavorite
-  } else {
-    favButton.style.color = "red"; // Favorite
-  }
-});
+// // favorite-btn click event
+// document
+// .getAnimations("fav-eve")
+// .addEventListener("click", function () {
+//   // Toggle the favorite state
+//   const favButton = document.getElementById("fav-eve");
+//   if(favButton.style.color === "red") {
+//     favButton.style.color = "black"; // Unfavorite
+//   } else {
+//     favButton.style.color = "red"; // Favorite
+//   }
+// });
 

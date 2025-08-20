@@ -83,6 +83,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
   },
   {
     eventTitle: "Cooking Masterclass",
+    organizer: "Chef Marie",
     startDate: "2025-10-10",
     startTime: "14:00",
     stopTime: "17:00",
@@ -124,6 +125,7 @@ formSubmit.addEventListener("click", () => {
 
 function getData() {
   let eventTitle = document.getElementById("event-title").value;
+  let organizer = document.getElementById("organizer").value;
   let categories = document.getElementById("event-category").value;
   let session = document.getElementById("event-session").value;
   let startDate = document.getElementById("start-date").value;
@@ -138,6 +140,7 @@ function getData() {
 
   item = {
     eventTitle,
+    organizer,
     startDate,
     startTime,
     stopTime,
@@ -249,11 +252,26 @@ function renderEvents() {
                                : item.price * 500 + " XAF"
                            }</p>
                        </div>
+                       
                    </div>
+                   <p class="event-details">${item.description}</p>
                </div>
         </a>
                `;
     html += itemHtml;
+  });
+
+  // Toggle the visibility of the event-details on hover
+  const eventCards = document.querySelectorAll(".event-card");
+  eventCards.forEach((card) => {
+    card.addEventListener("mouseover", () => {
+      const details = card.querySelector(".event-details");
+      details.style.display = "block";
+    });
+    card.addEventListener("mouseout", () => {
+      const details = card.querySelector(".event-details");
+      details.style.display = "none";
+    });
   });
 
   document.querySelector(".events-grid").innerHTML = html;
@@ -311,11 +329,25 @@ function renderTodays() {
     ? html
     : "<p> No Event today</>";
 }
-
+// Toggle the visibility of the event-details on hover
+function hoverEventDetails() {
+  const eventCards = document.querySelectorAll(".event-card");
+  eventCards.forEach((card) => {
+    card.addEventListener("mouseover", () => {
+      const details = card.querySelector(".event-details");
+      details.style.display = "block";
+    });
+    card.addEventListener("mouseout", () => {
+      const details = card.querySelector(".event-details");
+      details.style.display = "none";
+    });
+  });
+}
 function renderPage() {
   sorting("eventTitle");
   renderEvents();
   renderTodays();
+  hoverEventDetails();
 
   // an event renderd on page (any)
   let eventClick = document.querySelectorAll(".event-card");
