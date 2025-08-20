@@ -18,6 +18,11 @@ text-decoration: none;
 gap: 2rem;
 margin-right: 2rem;
 }
+.image-logo{
+height:8rem;
+width: 8rem;
+margin-left: 1rem;
+}
 .container{
 display: flex;
 width: 35%;
@@ -29,10 +34,11 @@ align-items: center;
 button{
 height: 5dvh;
 padding: 0.6rem;
-background-color: yellow;
+background-color:orange;
 color: black;
 border-radius: 5px;
 border: none;
+margin-right: 1rem;
 }
 footer{
 display: flex;
