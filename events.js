@@ -20,3 +20,12 @@ document.getElementById(
   "image"
 ).innerHTML = `<img src = ${eventData.image} alt="Event Image" class="event-image" >`;
 
+let yesCount = 0;
+let noCount = 0;
+
+function rsvp(response) {
+  if (response === "yes") {
+    yesCount++;
+    document.getElementById("yesCount").textContent = yesCount;
+  }
+}
