@@ -4,11 +4,12 @@ let eventData = JSON.parse(localStorage.getItem("eventData"));
 document.getElementById(
   "mapEmbed"
 ).innerHTML = `<iframe width="100%" height="300" src="https://maps.google.com/maps?q=${encodeURIComponent(
-  eventData.preciseLocstion
+  eventData.preciseLocation
 )}&output=embed"></iframe>`;
 
 // Populate event details in the respective HTML elements
 document.getElementById("eventTitle").textContent = eventData.eventTitle;
+document.getElementById("organizer").textContent = eventData.organizer;
 document.getElementById("startDate").textContent = eventData.startDate;
 document.getElementById("location").textContent = eventData.location;
 document.getElementById("description").textContent = eventData.description;
@@ -18,3 +19,13 @@ document.getElementById("stopTime").textContent = eventData.stopTime;
 document.getElementById(
   "image"
 ).innerHTML = `<img src = ${eventData.image} alt="Event Image" class="event-image" >`;
+
+let yesCount = 0;
+let noCount = 0;
+
+function rsvp(response) {
+  if (response === "yes") {
+    yesCount++;
+    document.getElementById("yesCount").textContent = yesCount;
+  }
+}

@@ -18,7 +18,7 @@
                             class="image-logo"></a>
                 </div>
                 <div>
-                  <u> <a href>Home</a></u>
+                    <u> <a href>Home</a></u>
                 </div>
                 <div class="contianer">
                     <a href><span>Create Event</span></a>
@@ -59,8 +59,17 @@
                         <option value="Bamenda II">Bamenda II</option>
                         <option value="Bamenda III">Bamenda III</option>
                     </select>
-                    <input type="date" placeholder="Date range"
-                        id="date-search" />
+                    <div class="date-container">
+                        <label for="start-date">
+                            <input type="date" placeholder="Start date"
+                                class="date-search start-date" />
+                        </label>
+
+                        <label for="stop-date">
+                            <input type="date" placeholder="stop-date"
+                                class="date-search stop-date" />
+                        </label>
+                    </div>
                 </div>
             </div>
         </section>
@@ -119,8 +128,10 @@
         <label for="event-title">Event Title<span
                 class="required">*</span></label>
         <input type="text" id="event-title"
-            placeholder="Enter the name of your event" required>
-
+            placeholder="Enter the name of your event" maxlength="100"
+            oninput="this.nextElementSibling.textContent = this.value.length + '/50'"
+            required>
+        <p id="charCount">0/50</p>
         <label for="event-category">Event Category<span
                 class="required">*</span></label>
         <select id="event-category" required>
@@ -182,9 +193,13 @@
                     class="required">*</span></label>
             <textarea id="event-description" rows="4"
                 placeholder="Describe what's special about your event & other important details."
-                required></textarea>
-
-            <h2>Upload Image</h2>
+                maxlength="1000"
+                oninput="this.nextElementSibling.textContent = this.value.length + '/1000'"
+                required> </textarea>
+            <p id="charCount">0/1000</p>
+            <label for="organizer">Event Organizer</label>
+            <input type="text" id="organizer" required>
+            <label>Upload Image</label>
             <input type="file" id="event-image" accept=".jpg,.jpeg,.png,.gif">
             <small>
                 Feature image must be at least 1170 pixels wide by 504 pixels

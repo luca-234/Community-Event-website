@@ -13,6 +13,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     image: "./images/sportimg.jpg",
     session: "Morning",
     attendance: 0,
+    preciseLocation: "big mankon",
     price: 0,
     status: "upcoming",
     id: "Annual_Sports_Day_2025-09-01",
@@ -30,6 +31,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     session: "Full Day",
     attendance: 0,
     price: 50,
+    preciseLocation: "mile 5",
     status: "upcoming",
     id: "Tech_Innovators_Conference_2025-10-15",
   },
@@ -47,6 +49,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     attendance: 0,
     price: 20,
     status: "upcoming",
+    preciseLocation: "bambily",
     id: "City_Marathon_2025-11-05",
   },
   {
@@ -62,6 +65,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     session: "Afternoon",
     attendance: 0,
     price: 10,
+    preciseLocation: "nyanga hall",
     status: "upcoming",
     id: "Art_&_Culture_Festival_2025-08-20",
   },
@@ -76,6 +80,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
     keyword: ["startups", "investment"],
     image: "./images/techimg.jpg",
     session: "Evening",
+    preciseLocation: "mile 2",
     attendance: 0,
     price: 0,
     status: "upcoming",
@@ -83,6 +88,7 @@ let Events = JSON.parse(localStorage.getItem("events")) || [
   },
   {
     eventTitle: "Cooking Masterclass",
+    organizer: "Chef Marie",
     startDate: "2025-10-10",
     startTime: "14:00",
     stopTime: "17:00",
@@ -124,6 +130,7 @@ formSubmit.addEventListener("click", () => {
 
 function getData() {
   let eventTitle = document.getElementById("event-title").value;
+  let organizer = document.getElementById("organizer").value;
   let categories = document.getElementById("event-category").value;
   let session = document.getElementById("event-session").value;
   let startDate = document.getElementById("start-date").value;
@@ -138,6 +145,7 @@ function getData() {
 
   item = {
     eventTitle,
+    organizer,
     startDate,
     startTime,
     stopTime,
@@ -157,9 +165,24 @@ function getData() {
   renderPage();
 }
 
+function determineStatus(){
+  let maped = Events.map((event)=>{
+    let startDate = new Date(event.startDate)
+    if (startDate.toDateString() < date.toDateString()){
+      event.status = 'Past'
+    }
+    else if(startDate.toDateString() > date.toDateString()){
+      event.status = 'upcomming'
+    }
+    else {
+      event.status = 'Today'
+    }
+  } )
+}
 // testingEvents()
 /*sorting function property to sort  by is passed */
 function sorting(property) {
+  determineStatus()
   sorted = Events.slice().sort((a, b) =>
     a[property].localeCompare(b[property])
   );
@@ -167,7 +190,7 @@ function sorting(property) {
 
 /*filtering categories, location and search keyWord */
 
-function filtering(category = "", location = "", search = "", date = "") {
+function filtering(category = "", location = "", search = "", start = "" , stop = "") {
   let categories = [];
   let findLocation = [];
   let keyWord = [];
@@ -192,7 +215,7 @@ function filtering(category = "", location = "", search = "", date = "") {
   });
 
   foundDates = Events.filter((item) => {
-    if (item.startDate === date) {
+    if (item.startDate >= start && item.startDate <= stop) {
       return true;
     } else return false;
   });
@@ -204,14 +227,15 @@ function List() {
   let category = document.querySelector("#select-category").value;
   let location = document.getElementById("select-location").value;
   let keyWord = document.querySelector("#keyword").value;
-  let date = document.querySelector("#date-search").value;
-  if (!!keyWord || category != "Category" || location != "location" || !!date) {
+  let startDate = document.querySelector(".start-date").value;
+  let stopDate = document.querySelector(".stop-date").value;
+  if (!!keyWord || category != "Category" || location != "location" || !!startDate) {
     isQueried = true;
   } else {
     isQueried = false;
   }
 
-  filtering(category, location, keyWord, date);
+  filtering(category, location, keyWord, startDate, stopDate);
   return isQueried ? filtered : sorted;
 }
 
@@ -227,9 +251,8 @@ function renderEvents() {
     let itemHtml = `
         <a href="./event.html">
              <div class="event-card" data-item-id=${item.id}>
-                      <img src=${item.image} width = '5%'
-                       
-                       class="event-img">
+                  <img src=${item.image} width = '5%' class="event-img">
+                   <span class="event-status tech">${item.status}</span>
                    <span class="event-category tech">${item.categories}</span>
                    <button class="event-fav">&#9734;</button>
                    <div class="event-info">
@@ -241,7 +264,7 @@ function renderEvents() {
                            <h3>${item.eventTitle} at</h3>
                            <p class="event-host">${item.location}</p>
                            <p class="event-time">${item.startTime} AM - ${
-      item.stopTime
+ item.stopTime
     } PM</p>
                            <p class="event-price">${
                              item.price == 0
@@ -249,11 +272,26 @@ function renderEvents() {
                                : item.price * 500 + " XAF"
                            }</p>
                        </div>
+                       
                    </div>
+                   <p class="event-details">${item.description}</p>
                </div>
         </a>
                `;
     html += itemHtml;
+  });
+
+  // Toggle the visibility of the event-details on hover
+  const eventCards = document.querySelectorAll(".event-card");
+  eventCards.forEach((card) => {
+    card.addEventListener("mouseover", () => {
+      const details = card.querySelector(".event-details");
+      details.style.display = "block";
+    });
+    card.addEventListener("mouseout", () => {
+      const details = card.querySelector(".event-details");
+      details.style.display = "none";
+    });
   });
 
   document.querySelector(".events-grid").innerHTML = html;
@@ -292,9 +330,7 @@ function renderTodays() {
                        <div>
                            <h3>${item.eventTitle}</h3>
                            <p class="event-host">${item.location}</p>
-                           <p class="event-time">${item.start} AM - ${
-      item.Stop
-    } PM</p>
+                           <p class="event-time">${item.startTime}- ${item.stopTime}</p>
                            <p class="event-price">${
                              item.price == 0
                                ? "FREE"
@@ -311,22 +347,34 @@ function renderTodays() {
     ? html
     : "<p> No Event today</>";
 }
-
+// Toggle the visibility of the event-details on hover
+function hoverEventDetails() {
+  const eventCards = document.querySelectorAll(".event-card");
+  eventCards.forEach((card) => {
+    card.addEventListener("mouseover", () => {
+      const details = card.querySelector(".event-details");
+      details.style.display = "block";
+    });
+    card.addEventListener("mouseout", () => {
+      const details = card.querySelector(".event-details");
+      details.style.display = "none";
+    });
+  });
+}
 function renderPage() {
   sorting("eventTitle");
   renderEvents();
   renderTodays();
+  hoverEventDetails();
 
   // an event renderd on page (any)
   let eventClick = document.querySelectorAll(".event-card");
   /* ading event listener for clicking on cart */
   eventClick.forEach((card) => {
     card.addEventListener("click", () => {
-      console.log(card);
       Events.forEach((event) => {
         if (event.id === card.dataset.itemId) {
           localStorage.setItem("eventData", JSON.stringify(event));
-          console.log(eventData);
         }
       });
     });

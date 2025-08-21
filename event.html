@@ -40,7 +40,8 @@
                     <div class="event-info">
                         <h3>Date and Time</h3>
                         <p>
-                            <br><label><img src="./Icons/date.svg" alt="data icon"
+                            <br><label><img src="./Icons/date.svg"
+                                    alt="data icon"
                                     width="15px" height="15px"> </label><span
                                 id="startDate"></span><br><br>
                             <label><img src="./Icons/clock.svg"
@@ -54,7 +55,10 @@
 
                     </div>
                     <div>
-                        <button class="subscribe-btn">Subscribe</button>
+                        <button class="subscribe-btn"
+                            onclick="rsvp('yes')">Subscribe</button>
+                        <div class="counter">Persons Subscribed: <span
+                                id="yesCount">0</span></div>
                         <h3>Ticket Information</h3>
                         <p>standard ticket: <span id="Price"></span></p>
 
@@ -71,11 +75,26 @@
                     <p id="description"></p>
                 </div>
                 <div class="hosted-by">
-                    <h3>Hosted by</h3>
+                    <h3>Hosted by:</h3><p id="organizer"></p>
                     <div class="host-info">
                         <span id="Status"></span>
                         <button class="contact-btn">Contact</button>
                         <button class="follow-btn">+ Follow</button>
+                    </div>
+                    <div class="share-section">
+                        <h3>Share this Event</h3>
+                        <!-- Social media share buttons -->
+                        <a
+                            href="https://www.facebook.com/"><button
+                                class="share-btn"
+                                id="shareFacebook">Facebook</button></a>
+                        <a
+                            href="https://twitter.com/"> <button
+                                class="share-btn"
+                                id="shareTwitter">Twitter</button></a>
+                        <a href="https://wa.me/?text=$"><button
+                                class="share-btn"
+                                id="shareWhatsApp">WhatsApp</button></a>
                     </div>
                 </div>
             </section>
