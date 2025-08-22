@@ -4,3 +4,4 @@ This site shows up coming events
 EventBam allows users to create events on this site
 When users are interested, they subscibe to the evenyts.
 Netlify link: https://event-bam.netlify.app/
+in order to filter events you would need to click search after selecting filters or entering keyWord
