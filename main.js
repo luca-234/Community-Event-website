@@ -281,18 +281,8 @@ function renderEvents() {
     html += itemHtml;
   });
 
+
   // Toggle the visibility of the event-details on hover
-  const eventCards = document.querySelectorAll(".event-card");
-  eventCards.forEach((card) => {
-    card.addEventListener("mouseover", () => {
-      const details = card.querySelector(".event-details");
-      details.style.display = "block";
-    });
-    card.addEventListener("mouseout", () => {
-      const details = card.querySelector(".event-details");
-      details.style.display = "none";
-    });
-  });
 
   document.querySelector(".events-grid").innerHTML = html;
 }
@@ -300,15 +290,14 @@ function renderEvents() {
 function renderTodays() {
   let html = "";
   let todaysList = Events.filter((item) => {
-    let itemDate = new Date(item.startDate);
     const formattedDate = date.toISOString().slice(0, 10);
-    const shortMonth = new Intl.DateTimeFormat("en-US", {
-      month: "short",
-    }).format(itemDate);
+    console.log(formattedDate , item.startDate , item.eventTitle)
     if (formattedDate === item.startDate) {
       return item;
     }
+
   });
+  
   todaysList.forEach((item) => {
     let itemDate = new Date(item.startDate);
     const shortMonth = new Intl.DateTimeFormat("en-US", {
@@ -316,7 +305,7 @@ function renderTodays() {
     }).format(itemDate);
     let itemHtml = `
             <a href="./event.html">
-             <div class="event-card" onclick="findItem(${item.id})">
+             <div class="event-card" data-item-id=${item.id} onclick="findItem(${item.id})">
                       <img src=${item.image} width = '5%'
                        alt="dev-fest"
                        class="event-img">
@@ -337,13 +326,16 @@ function renderTodays() {
                                : item.price * 500 + " XAF"
                            }</p>
                        </div>
+                       </div>
+                       <p class="event-details">${item.description}</p>
                    </div>
-               </div>
+                </div>
+               
                </a>
         `;
     html += itemHtml;
   });
-  document.querySelector(".todays").innerHTML = todaysList[0]
+  document.querySelector(".todays").innerHTML = html
     ? html
     : "<p> No Event today</>";
 }
@@ -353,6 +345,7 @@ function hoverEventDetails() {
   eventCards.forEach((card) => {
     card.addEventListener("mouseover", () => {
       const details = card.querySelector(".event-details");
+      console.log(card)
       details.style.display = "block";
     });
     card.addEventListener("mouseout", () => {
@@ -361,6 +354,7 @@ function hoverEventDetails() {
     });
   });
 }
+
 function renderPage() {
   sorting("eventTitle");
   renderEvents();
