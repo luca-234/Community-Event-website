@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="./styles/global.css">
         <link rel="stylesheet" href="./styles/main.css">
         <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     </head>
     <body>
         <header>
@@ -19,8 +21,8 @@
                     <u> <a href>Home</a></u>
                 </div>
                 <div class="contianer">
-                    <a href><span id="create-event-btn">Create Event</span></a>
-                    <a href="login.html"><span>Log in</span></a>
+                    <a href><span>Create Event</span></a>
+                    <a href><span>Log in</span></a>
                     <button>
                         <a href="login.html"><span>Sign up</span></a>
                     </button>
@@ -74,8 +76,14 @@
         <!--Events Section-->
 
         <section class="events-section">
+            <div class="universal">
             <h2>Events</h2>
-            <div class="events-grid">
+               <div class="button container" id="btn-contianer">
+        <button class="btn list"  id="btn-list"><i class="fa-solid fa-list"></i>List</button>
+        <button class="btn active"  id="btn-active"><i class="fa fa-th-large"></i>Grid</button>
+        </div>
+            </div>
+            <div class="events-grid" id="event-grid">
                 <!-- Event Card 1 -->
 
             </div>
@@ -93,6 +101,7 @@
             </div>
             <div class="event-card">
                 <img src="./images/arts.jpeg" alt="Event 2" />
+        
                 <h3>Art Exhibition</h3>
                 <p>Date: 30th Dec 2023</p>
                 <p>Location: Bamenda II</p>
@@ -273,6 +282,7 @@
         </footer>
         <script src="./script/slider.js"></script>
         <script src="./main.js"></script>
+        <script src="index.js"></script>
     </body>
 
 </html>
