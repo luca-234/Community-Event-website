@@ -2,7 +2,7 @@
 .hero-section {
   position: relative;
   width: 100%;
-  height: 300px;
+  min-height:fit;
   background: url('../images/landmark.jpg') center center/cover no-repeat;
   display: flex;
   align-items: center;
@@ -40,6 +40,7 @@
 }
 .search-bar {
   display: flex;
+  flex-wrap:wrap;
   gap: 15px;
   justify-content: center;
   align-items: center;
@@ -87,7 +88,6 @@ img{
     height:10px;
 }
 .events-section {
-  background: ;
   padding: 40px 0;
   color: #222;
 }
@@ -248,9 +248,10 @@ img{
 .event-form {
   display: none;
   color: #fff;
+  border: 1px groove gray;
   padding: 32px 24px;
   border-radius: 12px;
-  max-width: 800px;
+  max-width: 80% ;
   margin: 0 auto;
   font-family: 'Segoe UI', Arial, sans-serif;
 }
@@ -285,7 +286,6 @@ img{
   border-radius: 6px;
   border: 1px solid #ddd;
   font-size: 1rem;
-  background:;
   outline: none;
 }
 
